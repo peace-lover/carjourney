@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+
+    
+
+        
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Add Participants</li>
+        <li class="breadcrumb-item"><a href="manufacturer.html">Manufaturer</a></li>
+        <li class="breadcrumb-item"><a href="dealer.html">Dealer</a></li>
+        <li class="breadcrumb-item"><a href="leasingagent.html">Leasing Agent</a></li>
+        <li class="breadcrumb-item"><a href="index.html">Regulator</a></li>
+    </ol>
+  </nav>
+
+
+<center>
+    <h3>Automative Industry in Smart City</h3>
+</center>
+
+<div id="status"></div>
+   
+<div class="card">
+    <div class="card-header">
+      Add Manufacturer
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Input the Manufaturer Public ID / Address</h5>
+      <p class="card-text">Only Regulator can add a manufacturer</p>
+      <input type="text" id="manufacturerAddress" class="form-control" placeholder="Manufacturer Address" aria-label="Username" aria-describedby="basic-addon1">
+      <a href="#" class="btn btn-primary" onclick="App.addManufacturer()">Add</a>
+    </div>
+  </div>
+
+  <div class="card">
+        <div class="card-header">
+          Add Dealer
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Input the Dealer's Public ID / Address</h5>
+          <p class="card-text">Only Regulator can add a Dealer</p>
+          <input type="text" id="dealerAddress" class="form-control" placeholder="Dealer Address" aria-label="Username" aria-describedby="basic-addon1">
+          <a href="#" class="btn btn-primary" onclick="App.addDealer()">Add</a>
+        </div>
+      </div>
+
+      <div class="card">
+            <div class="card-header">
+              Add Leasing Agent
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Input the Leasing Agent Public ID / Address</h5>
+              <p class="card-text">Only Regulator can add a Leasing Agent</p>
+              <input type="text" id="leasingAgentAddress" class="form-control" placeholder="Leasing Agent Address" aria-label="Username" aria-describedby="basic-addon1">
+              <a href="#" class="btn btn-primary" onclick="App.addLeasingAgent()">Add</a>
+            </div>
+          </div>
+   
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
