@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Smart Car</title>
+    <title>Smart World</title>
   </head>
   <body>
 
@@ -21,9 +21,9 @@
             <li class="breadcrumb-item"><a href="participants.html">Add Participants</a></li>
             <li class="breadcrumb-item"><a href="manufacturer.html">Manufaturer</a></li>
             <li class="breadcrumb-item"><a href="dealer.html">Dealer</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Leasing Agent</li>
-            <li class="breadcrumb-item"><a href="user.html">User</a></li>
+            <li class="breadcrumb-item"><a href="leasingagent.html">Leasing Agent</a></li>
             <li class="breadcrumb-item"><a href="index.html">Regulator</a></li>
+            <li class="breadcrumb-item active" aria-current="page">User</a></li>
     </ol>
   </nav>
 
@@ -33,17 +33,14 @@
     <h3>Automative Industry in Smart City</h3>
 </center>
 
-<a href="#" class="btn btn-primary" onclick="App.getLoyaltyPointsOfLeasingAgent()">Show My Loyalty Points</a>
-<br>
-<div id = "leasingAgentPoints"></div>
-<br>
-
 <div id="status"></div>
-   
+<br>
+<center><h3> Available Cars for Purchase</h3></center>
+       
 
-  <div class="container-fluid">
+      <div class="container-fluid">
         <div class="container">
-            <table class="table table-dark" id="leasingTable">
+            <table class="table table-dark" id="leasingOwnerCarsTable">
                 <thead>
                   <tr>
                     <th scope="col">Car Id</th>
@@ -59,22 +56,71 @@
           </div>
       </div>
 
- 
-
    <div class="card">
     <div class="card-header">
-      Take Car For Leasing
+      Buy Car
     </div>
     <div class="card-body">
-      <h5 class="card-title">Input the car id to obtain Leasing</h5>
-      <p class="card-text">Only leasing agent can take car for leasing</p>
-      <input type="text" id="leasingCarId" class="form-control" placeholder="Car Id" aria-label="Username" aria-describedby="basic-addon1">
+      <h5 class="card-title">Input the car id to buy and start using</h5>
+      <p class="card-text">Any users can buy the car</p>
+      <input type="text" id="buyingCarId" class="form-control" placeholder="Car Id" aria-label="Username" aria-describedby="basic-addon1">
       <br>
-      <a href="#" class="btn btn-primary" onclick="App.takeCarForLeasing()">Lease</a>
+      <a href="#" class="btn btn-primary" onclick="App.buyCar()">Buy</a>
     </div>
   </div>
 
-  
+  <center><h4>Purchased Cars</h4></center>
+  <div class="container-fluid">
+    <div class="container">
+        <table class="table table-dark" id="carsOwnedByUser">
+            <thead>
+              <tr>
+                <th scope="col">Car Id</th>
+                <th scope="col">Car Owner</th>
+                <th scope="col">Car Stage</th>
+                <th scope="col">Car Model</th>
+                <th scope="col">Car Make</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+      </div>
+  </div>
+
+
+  <div class="card">
+    <div class="card-header">
+      Scrap Car
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Input the car id to Scrap</h5>
+      <p class="card-text">Only Owner Can Scrap the Car</p>
+      <input type="text" id="scrapCarId" class="form-control" placeholder="Car Id" aria-label="Username" aria-describedby="basic-addon1">
+      <br>
+      <a href="#" class="btn btn-primary" onclick="App.scrapCar()">scrap</a>
+    </div>
+  </div>
+
+
+  <center><h4>Scrapped Cars</h4></center>
+  <div class="container-fluid">
+    <div class="container">
+        <table class="table table-dark" id="carsOwnedByScrapper">
+            <thead>
+              <tr>
+                <th scope="col">Car Id</th>
+                <th scope="col">Car Owner</th>
+                <th scope="col">Car Stage</th>
+                <th scope="col">Car Model</th>
+                <th scope="col">Car Make</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+      </div>
+  </div>
 
  
    

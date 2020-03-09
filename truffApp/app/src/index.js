@@ -72,6 +72,17 @@ const App = {
         } else if (presentOwner=="leasingAgent"){
           carStage = "Under Lease";
           owner = "Leasing Agent";
+          $('#leasingOwnerCarsTable > tbody:first').append(`<tr><th scope="row">${i}</th><td>${owner}</td><td>${carStage}</td><td>${carmodel}</td><td>${carmake}</td></tr>`);
+        } else if(presentOwner=="user") {
+           carStage = "In Use By Owner";
+          owner = carDetails[0];
+          if(this.account == owner) {
+            $('#carsOwnedByUser > tbody:first').append(`<tr><th scope="row">${i}</th><td>${owner}</td><td>${carStage}</td><td>${carmodel}</td><td>${carmake}</td></tr>`);
+          }
+        } else if (presentOwner == "scrapper") {
+          carStage = "Scrapped";
+          owner = carDetails[0];
+          $('#carsOwnedByScrapper > tbody:first').append(`<tr><th scope="row">${i}</th><td>${owner}</td><td>${carStage}</td><td>${carmodel}</td><td>${carmake}</td></tr>`);
         }
 
         $('#carsTable > tbody:first').append(`<tr><th scope="row">${i}</th><td>${owner}</td><td>${carStage}</td><td>${carmodel}</td><td>${carmake}</td></tr>`); 
@@ -150,6 +161,7 @@ const App = {
     await manufactureUpdateMakeandModel(carId,carmake,carmodel).send({ from: this.account });
 
     this.setStatus("Transaction complete!");
+    location.reload();
 
 
   },
@@ -164,6 +176,7 @@ const App = {
     await issueVehicleTemplateByDealer(carId).send({ from: this.account });
 
     this.setStatus("Transaction complete!");
+    location.reload();
 
 
   },
@@ -184,9 +197,39 @@ const App = {
 
   },
 
+  buyCar : async function() {
+
+    const buyingCarId = document.getElementById("buyingCarId").value;
+    this.setStatus("Initiating transaction... (please wait)");
+    const { buyCar } = this.meta.methods;
+    await buyCar(buyingCarId,this.account).send({ from: this.account });
+    this.setStatus("Transaction complete!");
+    location.reload();
+
+  },
+
+  scrapCar : async function() {
+    const scrapCarId = document.getElementById("scrapCarId").value;
+    this.setStatus("Initiating transaction... (please wait)");
+    const { scrapCar } = this.meta.methods;
+    await scrapCar(scrapCarId,this.account).send({ from: this.account });
+    this.setStatus("Transaction complete!");
+    location.reload();
+  
+
+  },
+
   setStatus: function(message) {
     const status = document.getElementById("status");
     status.innerHTML = message;
+  },
+
+  getLoyaltyPointsOfLeasingAgent : async function() {
+    const { loyaltypoints } = this.meta.methods;
+    const loyaltyPointsOfLeaser = await loyaltypoints(this.account).call();
+    console.log("this is",loyaltyPointsOfLeaser);
+    const loyaltyPointsDisplay = document.getElementById("leasingAgentPoints");
+    loyaltyPointsDisplay.innerHTML = "You have "+ loyaltyPointsOfLeaser + " Loyalty Points ";
   },
 };
 
@@ -200,9 +243,9 @@ window.addEventListener("load", function() {
     window.ethereum.on('accountsChanged', function (accounts) {
       location.reload(); 
     })
-    window.ethereum.on('networkChanged', function (accounts) {
-      location.reload(); 
-    })
+    // window.ethereum.on('networkChanged', function (accounts) {
+    //   location.reload(); 
+    // })
   } else {
     console.warn(
       "No web3 detected. Falling back to http://127.0.0.1:8545. You should remove this fallback when you deploy live",
